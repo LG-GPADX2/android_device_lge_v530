@@ -17,13 +17,13 @@
 # Inherit framework first
 $(call inherit-product, $(SRC_TARGET_DIR)/product/full_base_telephony.mk)
 
-# Inherit from m700n device
+# Inherit from v530 device
 $(call inherit-product, device/lge/m700n/device.mk)
 
 # Set those variables here to overwrite the inherited values.
 BOARD_VENDOR := lge
-PRODUCT_DEVICE := m700n
-PRODUCT_NAME := lineage_m700n
+PRODUCT_DEVICE := 
+PRODUCT_NAME := lineage_
 PRODUCT_BRAND := lge
-PRODUCT_MODEL := LG Q6
+PRODUCT_MODEL := 
 PRODUCT_MANUFACTURER := LGE

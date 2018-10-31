@@ -15,10 +15,10 @@
 #
 
 # Get common aspects
-$(call inherit-product-if-exists, device/lge/q6-common/device-common.mk)
+$(call inherit-product-if-exists, device/lge/v530-common/device-common.mk)
 
 # Get non-open-source specific aspects
-$(call inherit-product-if-exists, vendor/lge/m700n/m700n-vendor.mk)
+$(call inherit-product-if-exists, vendor/lge/v530/v530-vendor.mk)
 
 # Overlays
 DEVICE_PACKAGE_OVERLAYS += $(LOCAL_PATH)/overlay

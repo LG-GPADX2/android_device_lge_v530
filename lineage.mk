@@ -14,18 +14,18 @@
 # limitations under the License.
 
 
-$(call inherit-product, device/lge/m700n/full_m700n.mk)
+$(call inherit-product, device/lge/v530/full_v530.mk)
 
 # Inherit some common LineageOS stuff.
 $(call inherit-product, vendor/cm/config/common_full_phone.mk)
 
 # Set product device & name
 PRODUCT_BUILD_PROP_OVERRIDES += \
-   PRODUCT_NAME=lineage_q6
+   PRODUCT_NAME=
 
 # Overlays (inherit after vendor/cm to ensure we override it)
 DEVICE_PACKAGE_OVERLAYS += $(LOCAL_PATH)/overlay
 
 PRODUCT_BUILD_PROP_OVERRIDES += \
-    BUILD_FINGERPRINT=lge/mh_global_com/mh:7.1.1/NMF26F/1722016123ab3:user/release-keys \
-    PRIVATE_BUILD_DESC="mh_global_com-user 7.1.1 NMF26F 1722016123ab3 release-keys"
+    #
+    #

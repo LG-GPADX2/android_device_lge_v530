@@ -15,12 +15,12 @@
 #
 #
 
-include device/lge/q6-common/BoardConfigCommon.mk
+include device/lge/v530-common/BoardConfigCommon.mk
 
-DEVICE_PATH := device/lge/m700n
+DEVICE_PATH := device/lge/v530
 
 # Assert
-TARGET_OTA_ASSERT_DEVICE := m700n
+TARGET_OTA_ASSERT_DEVICE := v530,v530kb
 
 # inherit from the proprietary version
--include vendor/lge/m700n/BoardConfigVendor.mk
+-include vendor/lge/v530/BoardConfigVendor.mk

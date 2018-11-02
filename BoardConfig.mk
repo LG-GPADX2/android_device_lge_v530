@@ -1,11 +1,11 @@
 #
-# Copyright (C) 2017 The LineageOS Project
+# Copyright (C) 2015-2016 The Android Open-Source Project
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
 # You may obtain a copy of the License at
 #
-#      http://www.apache.org/licenses/LICENSE-2.0
+# http://www.apache.org/licenses/LICENSE-2.0
 #
 # Unless required by applicable law or agreed to in writing, software
 # distributed under the License is distributed on an "AS IS" BASIS,
@@ -13,14 +13,79 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 #
-#
 
-include device/lge/v530-common/BoardConfigCommon.mk
+DEVICE_PATH := device/lge/tf840
 
-DEVICE_PATH := device/lge/v530
+TARGET_SPECIFIC_HEADER_PATH := $(DEVICE_PATH)/include
 
-# Assert
-TARGET_OTA_ASSERT_DEVICE := v530,v530kb
+# Platform
+TARGET_BOARD_PLATFORM := msm8937
+TARGET_BOARD_PLATFORM_GPU := qcom-adreno505
 
-# inherit from the proprietary version
--include vendor/lge/v530/BoardConfigVendor.mk
+# Bootloader
+TARGET_BOOTLOADER_BOARD_NAME := msm8937_32
+TARGET_NO_BOOTLOADER := true
+
+# Architecture
+
+TARGET_ARCH := arm64
+TARGET_CPU_ABI := arm64-v8a
+TARGET_CPU_ABI2 := armeabi-v7a
+TARGET_ARCH_VARIANT := armv8-a
+TARGET_CPU_VARIANT := generic
+
+TARGET_2ND_ARCH := arm
+TARGET_2ND_ARCH_VARIANT := armv7-a-neon
+TARGET_2ND_CPU_ABI := armeabi-v7a
+TARGET_2ND_CPU_ABI2 := armeabi
+TARGET_2ND_CPU_VARIANT := cortex-a53
+
+TARGET_CPU_SMP := true
+
+ARCH_ARM_HAVE_NEON := true
+ARCH_ARM_HAVE_VFP := true
+ARCH_ARM_HAVE_TLS_REGISTER := true
+
+# Compilation Flags
+TARGET_GLOBAL_CFLAGS += -mfpu=neon -mfloat-abi=softfp
+TARGET_GLOBAL_CPPFLAGS += -mfpu=neon -mfloat-abi=softfp
+
+# Partitions
+BOARD_FLASH_BLOCK_SIZE := 
+BOARD_BOOTIMAGE_PARTITION_SIZE :=  #  * 1024 mmcblk0p46
+BOARD_RECOVERYIMAGE_PARTITION_SIZE :=  #  * 1024 mmcblk0p49
+BOARD_SYSTEMIMAGE_PARTITION_SIZE :=  #  * 1024 dm-0
+BOARD_USERDATAIMAGE_PARTITION_SIZE :=  #  * 1024 mmcblk0p60
+
+# KERNEL
+BOARD_KERNEL_CMDLINE := 
+BOARD_KERNEL_BASE := 0x80000000
+BOARD_KERNEL_PAGESIZE := 2048
+BOARD_MKBOOTIMG_ARGS := --kernel_offset 0x00008000 --ramdisk_offset 0x02000000 --tags_offset 0x00000100
+
+TARGET_RECOVERY_FSTAB := device/lge/tf840/recovery.fstab
+
+# Power
+TARGET_POWERHAL_VARIANT := qcom
+
+# Qualcomm support
+BOARD_USES_QCOM_HARDWARE := true
+
+# Recovery
+BOARD_HAS_NO_SELECT_BUTTON := true
+TARGET_USERIMAGES_USE_EXT4 := true
+TARGET_USERIMAGES_USE_F2FS := true
+TARGET_PREBUILT_KERNEL := device/lge/tf840/kernel
+
+# TWRP (TBD)
+TW_THEME := portrait_hdpi
+TARGET_RECOVERY_QCOM_RTC_FIX := true
+# RECOVERY_GRAPHICS_USE_LINELENGTH := true
+TW_INCLUDE_CRYPTO := true
+# BOARD_SUPPRESS_EMMC_WIPE := true
+# TW_SCREEN_BLANK_ON_BOOT := true
+TW_EXCLUDE_DEFAULT_USB_INIT := true
+TW_EXCLUDE_SUPERSU := true
+TW_EXTRA_LANGUAGES := true
+TW_INCLUDE_NTFS_3G := true
+TW_BRIGHTNESS_PATH := "/sys/class/leds/lcd-backlight/brightness"

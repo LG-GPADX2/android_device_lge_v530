@@ -1,5 +1,5 @@
 #
-# Copyright (C) 2017 The LineageOS Project
+# Copyright (C) 2014 The CyanogenMod Project
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
@@ -14,11 +14,19 @@
 # limitations under the License.
 #
 
-# Get common aspects
-$(call inherit-product-if-exists, device/lge/v530-common/device-common.mk)
+PRODUCT_AAPT_CONFIG := normal
+PRODUCT_AAPT_PREF_CONFIG := xhdpi
 
-# Get non-open-source specific aspects
-$(call inherit-product-if-exists, vendor/lge/v530/v530-vendor.mk)
+# Inherit from the common Open Source product configuration
+$(call inherit-product, $(SRC_TARGET_DIR)/product/languages_full.mk)
+$(call inherit-product, $(SRC_TARGET_DIR)/product/core_64_bit.mk)
+$(call inherit-product, $(SRC_TARGET_DIR)/product/aosp_base_telephony.mk)
+$(call inherit-product-if-exists, frameworks/native/build/phone-xhdpi-2048-dalvik-heap.mk)
 
-# Overlays
-DEVICE_PACKAGE_OVERLAYS += $(LOCAL_PATH)/overlay
+# Recovery
+PRODUCT_COPY_FILES += \
+    device/lge/tf840/kernel:kernel
+
+#Encryption
+PRODUCT_PACKAGES += \
+    libcryptfs_hw

@@ -14,4 +14,5 @@
 # limitations under the License.
 #
 
+add_lunch_combo omni_tf840-eng
 add_lunch_combo omni_tf840-userdebug
